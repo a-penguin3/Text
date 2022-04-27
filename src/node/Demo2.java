@@ -30,16 +30,15 @@ public class Demo2 {
         ListNode head2 = l2;
 //        ListNode p1Node;
 //        ListNode p2Node;
-        ArrayList<Integer> resList = new ArrayList<>();
+        ListNode res = new ListNode();
 
         int length = 1;
-        while(head1 != null){
-            resList.add(head1.val + head2.val);
-            head1 = head1.next;
+        while(head1 != null || head2 != null){
+            int x1 = head1 == null ? 0 : head1.val;
             head2 = head2.next;
             length ++;
         }
-        
+        return res;
     }
 
 }
