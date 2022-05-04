@@ -23,18 +23,36 @@ public class Sort {
     /**
      * 选择排序
      */
-    public static void selectionSort(){
+    public static void selectionSort() {
         int boundary = 0;
-        while (boundary != nums.length - 1){
+        while (boundary != nums.length - 1) {
             int mix = boundary;
-            for(int i = boundary; i < nums.length ; i++){
-                if (nums[i] < nums[boundary]){
+            for (int i = boundary + 1; i < nums.length; i++) {
+                if (nums[i] < nums[mix]) {
                     mix = i;
                 }
             }
-            swap(boundary,mix);
-            boundary ++;
+            swap(boundary, mix);
+            boundary++;
         }
+    }
+
+    /**
+     * 快速排序
+     */
+    public static void insertionSort() {
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] < nums[j]) {
+                    swap(i,j);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void mergeSort(){
+
     }
 
     public static void swap(int start, int end) {
@@ -46,8 +64,9 @@ public class Sort {
     public static void main(String[] args) {
         nums = new int[]{3, 1, 6, 2, 4, 2, 7};
 //        bubbleSort();
-        selectionSort();
-        for (int num : nums){
+//        selectionSort();
+        insertionSort();
+        for (int num : nums) {
             System.out.print(num);
         }
     }
