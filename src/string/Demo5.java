@@ -5,8 +5,7 @@ package string;
  */
 public class Demo5 {
 
-
-    public String longestPalindrome(String s) {
+    public static String longestPalindrome(String s) {
         int len = s.length();
         if (len < 2) {
             return s;
@@ -52,6 +51,45 @@ public class Demo5 {
             }
         }
         return s.substring(begin, begin + maxLen);
+    }
+
+    public static int solve(String s) {
+        int n = s.length();
+        boolean[][] record = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            record[i][i] = true;
+        }
+        int maxLen = 1;
+        for (int len = 2; len <= n; len++) {
+
+            for (int i = 0; i < n; i++){
+
+                int j = i + len - 1;
+                if (j >= n) break;
+
+                var b = s.charAt(i) == s.charAt(j);
+                if (len == 2){
+                    record[i][j] = b;
+                    if (b && len >= maxLen) maxLen = len;
+                    continue;
+                }
+                if (record[i + 1][j - 1]) {
+                    record[i][j] = b;
+                    if (b && len >= maxLen) maxLen = len;
+                } else {
+                    record[i][j] = false;
+                }
+            }
+        }
+        return maxLen;
+    }
+
+    public static void main(String[] args) {
+        String s = "abccba";
+        int len = solve(s);
+        String res = longestPalindrome(s);
+        System.out.println(len);
+        System.out.println(res.length());
     }
 
 }
