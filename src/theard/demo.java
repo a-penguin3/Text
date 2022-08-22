@@ -16,14 +16,14 @@ class Demo01 {
 
             for (int i = 1; i <=100 ; i++) {
                 //通过线程池创建线程
-                threadPool.execute(()->{
+                threadPool2.execute(()->{
                     System.out.println(Thread.currentThread().getName()+ " ok");
                 });
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            threadPool.shutdown();
+            threadPool2.shutdown();
         }
     }
 }
